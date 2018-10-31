@@ -19,7 +19,9 @@ export default class Sprite{
 
   //渲染自己的方法
   render(ctx){
+    console.log('执行方法');
     //canvans 中用来绘制图片
-    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    // this.img 是一个图片对象 
+    //ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 }

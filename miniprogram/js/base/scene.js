@@ -15,7 +15,7 @@ export default class Scene{
      */
     render(ctx){
         for (let role in this.roles) {
-            role.render(ctx)
+            this.roles[role].render(ctx)
         }
     }
 }
