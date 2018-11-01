@@ -2,11 +2,10 @@
 import Scene from '../base/scene'
 
 //导入当前场景的角色
-import FlyappBirdTitle from '../roles/start/flyapptitle'
-import replay from '../roles/start/replay'
-import sky from '../roles/start/sky'
-import landList from '../roles/start/land'
-import bird from '../roles/start/bird'
+import bird from '../roles/running/bird'
+import skyList from '../roles/running/sky'
+import landList from '../roles/running/land'
+import pipeList from '../roles/running/pipe'
 
 /**
  * 创建start场景
@@ -16,10 +15,9 @@ import bird from '../roles/start/bird'
      //当前场景角色列表
      roles:[
          //注意：角色添加问题 z-index
-        sky,
-        FlyappBirdTitle,
-        replay,
+        ...skyList,
         ...landList,
+        ...pipeList,
         bird
         
     ]

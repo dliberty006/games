@@ -35,10 +35,8 @@ export default new Sprite({
             this.speed = -4.5
         }
 
-
-        const x = (databus.screenWidth - this.width) /2
         ctx.drawImage(databus.resources.images[this.img],
            0,0,this.width,this.height,
-           x,this.y,this.width,this.height )
+           this.x,this.y,this.width,this.height )
     }
 })

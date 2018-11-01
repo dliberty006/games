@@ -5,10 +5,7 @@
 
 import './js/libs/weapp-adapter'
 
-// 测试创建好的场景对象
+//入口
+import Flyapplybird from './js/flyapplybird'
 
-const ctx = canvas.getContext('2D');
-
-import start from './js/scenes/start'
-
-start.render(ctx)
+new Flyapplybird()
