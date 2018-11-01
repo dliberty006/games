@@ -3,6 +3,8 @@ import Sprite from '../../base/sprite'
 //导入游戏配置文件
 import config from '../../config'
 
+import sceneManager from '../../scenes/index'
+
 /**
  * 这是 replay 场景中的标题角色
  */
@@ -12,6 +14,7 @@ export default new Sprite({
     img: 'replay',
     ...config.gameInfo.replay,
     click() {
-        console.log("replay");
+      //   console.log("replay");
+      sceneManager.changeScene('getready')
     }
 })

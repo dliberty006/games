@@ -17,6 +17,13 @@ export default new Sprite({
     a:9.8,
     speed:0,
 
+    
+    init(){
+        this.x = config.gameInfo.bird.x
+        this.y = config.gameInfo.bird.y
+        this.speed = 0
+    },
+
     // 因为小鸟图片的绘制方式与其它不同
     //因此，sprite基类中的render无法渲染
 

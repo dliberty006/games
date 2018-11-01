@@ -12,7 +12,9 @@ for(let i = 0;i<2;i++) {
         img: 'sky',
         ...config.gameInfo.sky,
         x:i*config.gameInfo.sky.width,
-    
+        init() {
+            this.x = i*config.gameInfo.sky.width
+        },
        update() {
            this.x += this.speed
     

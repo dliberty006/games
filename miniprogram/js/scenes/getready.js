@@ -8,6 +8,9 @@ import sky from '../roles/getready/sky'
 import landList from '../roles/getready/land'
 import bird from '../roles/getready/bird'
 
+import sceneManager from '../scenes/index'
+import databus from '../databus';
+
 /**
  * 创建start场景
  */
@@ -22,5 +25,11 @@ import bird from '../roles/getready/bird'
         ...landList,
         bird
         
-    ]
+    ],
+
+    click() {
+        databus.gameover = false
+        sceneManager.changeScene('running')
+       
+    }
  })

@@ -9,5 +9,8 @@ export default {
     },
     //手机平面的高度和宽度
     screenWidth:window.innerWidth,
-    screenHeight:window.innerHeight
+    screenHeight:window.innerHeight,
+
+    //游戏是否结束
+    gameover:false
 }

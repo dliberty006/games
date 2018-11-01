@@ -5,6 +5,14 @@ import config from '../../config'
 
 import databus from '../../databus'
 
+//最大旋转角度
+const MAX_ANGLE = 90
+const MAX_SPEED = 12
+
+const MAX_HIEGHT = databus.screenHeight - config.gameInfo.land.height
+
+//当前速度/最大速度 = 当前角度/最大角度
+
 /**
  * 这是 replay 场景中的标题角色
  */
@@ -17,27 +25,45 @@ export default new Sprite({
     a:9.8,
     speed:0,
 
+    init(){
+        this.x = config.gameInfo.bird.x
+        this.y = config.gameInfo.bird.y
+        this.speed = 0
+    },
+
     // 因为小鸟图片的绘制方式与其它不同
     //因此，sprite基类中的render无法渲染
 
     //重写
     render(ctx,delta) {
-        //console.log('鸟')
-
-        //小鸟下落，匀加速直线运动
-        // S = V * t + 1/2 * a * t * t
-        // V = v0 + a * t
+        
         this.speed = (this.speed + this.a * delta)
         this.y += (this.speed * delta + 1/2 * this.a * delta * delta) * 30
 
-
-        if (this.y >= 210) {
-            this.speed = -4.5
+        if (this.y >= MAX_HIEGHT) {
+            this.y = MAX_HIEGHT
         }
 
+        //保存状态
+        ctx.save()
+
+        //进行小鸟的旋转，但是需要先平移
+        //也就是，先平移再旋转
+        ctx.translate(this.x,this.y)
+
+        //根据当前速度计算当前旋转角度
+        let curAngle = this.speed / MAX_SPEED * MAX_ANGLE
+
+        if (curAngle > MAX_ANGLE) {
+            curAngle = MAX_ANGLE
+        }
+        ctx.rotate(curAngle / 180 * Math.PI)
 
         ctx.drawImage(databus.resources.images[this.img],
            0,0,this.width,this.height,
-           this.x,this.y,this.width,this.height )
+           -1/2 * this.width,-1/2 * this.height,this.width,this.height )
+        
+        //恢复状态
+        ctx.restore()
     }
 })

@@ -23,6 +23,7 @@
     // 当前场景名称 默认  start
   currntSceneName: 'start',
 
+
      /**
       * 触发当前场景事件
       * @param {*} e 
@@ -45,8 +46,10 @@
     /**
      * 切换场景
      */
-    changeScene(cceneName) {
+    changeScene(sceneName) {
+
+        this.scenesList[sceneName].init()
         //切换场景的时候，决定是否复用上一场景的角色
-        this.currntSceneName = cceneName
+        this.currntSceneName = sceneName
     }
  }

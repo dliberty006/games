@@ -20,7 +20,30 @@ for (let i = 0; i < 3; i++) {
         bottomY : 0,
 
         init() {
+
+            this.x = databus.screenWidth + (config.gameInfo.pipe.width + config.gameInfo.pipe.horizontalGap) * i
             this.setPipeY();
+            this.bottomY = 0
+            this.y = 0
+
+            this.setPipeY()
+        },
+
+        /**
+         * 记录管道坐标
+         */
+        setPostition() {
+            const position = {
+                startX : this.x,
+                startY : this.y,
+                endX : this.x + this.width,
+                endY : this.y+ this.height
+            }
+
+            this.position = {
+                top:position,
+                bottom:{...position,startY:this.bottomY,endY:this.bottomY+this.height}
+            }
         },
 
         //随机生成上管道高度
@@ -41,6 +64,8 @@ for (let i = 0; i < 3; i++) {
                 this.x += (this.width + this.horizontalGap) * 3
                 this.setPipeY();
             }
+
+            this.setPostition()
         },
 
         /**

@@ -1,3 +1,6 @@
+import databus from "../databus";
+
+
 /**
  * 场景类
  */
@@ -6,13 +9,19 @@ export default class Scene{
     constructor(config){
         //游戏中的精灵（角色）
         //roles 是一个数组
-        this.roles = config.roles
+        //this.roles = config.roles
+
+        //
+        for (let k in config) {
+            this[k] = config[k];
+        }
     }
 
+    init() {
+        
+    }
     update() {
-        this.roles.forEach(role => {
-            role.update()
-        });
+        
     }
 
     /**
@@ -23,6 +32,11 @@ export default class Scene{
 
         this.roles.forEach(role => {
             role.render(ctx,delta)
+
+            if (!databus.gameover) {
+                role.update()
+            }
+            
         });
         this.update()
     }
